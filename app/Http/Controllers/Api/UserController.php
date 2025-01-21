@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    /**
+     * Listar Usuarios
+     */
     public function index(): JsonResponse
     {
         $users = User::get();
@@ -21,7 +24,9 @@ class UserController extends Controller
         ], 200);
     }
 
-
+    /**
+     * Visualizar Usuario
+     */
     public function show(User $user): JsonResponse
     {
          // Verifica se o usuário existe
@@ -38,6 +43,9 @@ class UserController extends Controller
         ], 200);
     }
 
+    /**
+     * Inserir Usuario
+     */
     public function store(UserRequest $request): JsonResponse
     {
         DB::beginTransaction();
@@ -66,6 +74,9 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Atualizar Usuário
+     */
     public function update(UserRequest $request, User $user): JsonResponse
     {
 
@@ -96,6 +107,9 @@ class UserController extends Controller
 
     }
 
+    /**
+     * Deletar Usuário
+     */
     public function destroy($id): JsonResponse
     {
         $user = User::find($id);

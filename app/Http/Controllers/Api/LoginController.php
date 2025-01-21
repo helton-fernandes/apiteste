@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+
+    /**
+     * Login - Utilizado para obter o token de autenticação
+     *
+     */
     public function index(Request $request): JsonResponse
     {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
@@ -31,12 +36,13 @@ class LoginController extends Controller
         }
 
 
-        return response()->json([
-            'status' => true,
-            'token' => "123456controller"
-        ]);
     }
 
+
+    /**
+     * Logout - Utilizado para deslogar o usuario
+     *
+     */
     public function logout(User $user): JsonResponse
     {
         try {
@@ -54,9 +60,5 @@ class LoginController extends Controller
             ], 400);
         }
 
-        return response()->json([
-            'status' => true,
-            'message' => "Logout efetudado com sucesso!"
-        ]);
     }
 }
